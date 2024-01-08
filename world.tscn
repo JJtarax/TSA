@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://11mqii0w2c35"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_xapa8"]
+[ext_resource type="PackedScene" uid="uid://bpye7domitjg3" path="res://player.tscn" id="2_bk5kt"]
+[ext_resource type="PackedScene" uid="uid://cjn2qkt2wxxwm" path="res://yes/left.tscn" id="3_jwadv"]
+[ext_resource type="PackedScene" uid="uid://crqten00tpyt2" path="res://yes/right.tscn" id="4_dxgh7"]
+[ext_resource type="PackedScene" uid="uid://c5lmhw2ipeito" path="res://yes/up.tscn" id="5_8bwrx"]
+[ext_resource type="PackedScene" uid="uid://6jsoqvcs8feb" path="res://spikes.tscn" id="6_41mlm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6istl"]
+size = Vector2(32, 64)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_xapa8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-192, -384, 0, -384, 288, -384, 512, -384, 512, -128, 0, -128, 0, 96, 88, 96, 88, 136, 64, 136, 64, 160, 88, 160, 88, 160, 128, 160, 128, 136, 168, 136, 288, 136, 288, 40, 320, 40, 320, 104, 352, 104, 384, 104, 384, 80, 352, 80, 352, 48, 656, 48, 656, 64, 680, 64, 680, 48, 744, 48, 744, 8, 512, 8, 512, -128, 512, -384, 912, -384, 912, 384, -192, 384)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_bk5kt")]
+position = Vector2(32, 88)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(240, 56)
+shape = SubResource("RectangleShape2D_6istl")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_left = 224.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 88.0
+
+[node name="left" parent="." instance=ExtResource("3_jwadv")]
+position = Vector2(104, 168)
+
+[node name="right" parent="." instance=ExtResource("4_dxgh7")]
+position = Vector2(32, 104)
+
+[node name="up" parent="." instance=ExtResource("5_8bwrx")]
+position = Vector2(136, 152)
+
+[node name="up" parent="up" instance=ExtResource("5_8bwrx")]
+position = Vector2(1000, -150)
+scale = Vector2(1, 1)
+
+[node name="up3" parent="up/up" instance=ExtResource("5_8bwrx")]
+position = Vector2(-400, -450)
+scale = Vector2(1.04167, 1.04167)
+
+[node name="up2" parent="up/up/up3" instance=ExtResource("5_8bwrx")]
+position = Vector2(480, 192)
+scale = Vector2(1, 1)
+
+[node name="up3" parent="up/up/up3/up2" instance=ExtResource("5_8bwrx")]
+position = Vector2(192, 144)
+scale = Vector2(1, 1)
+
+[node name="right2" parent="." instance=ExtResource("4_dxgh7")]
+position = Vector2(296, 88)
+
+[node name="right2" parent="right2" instance=ExtResource("4_dxgh7")]
+position = Vector2(-0.00012207, -250)
+scale = Vector2(1.04, 1.04)
+
+[node name="left2" parent="." instance=ExtResource("3_jwadv")]
+position = Vector2(246.795, 56)
+
+[node name="Spikes" parent="." instance=ExtResource("6_41mlm")]
+position = Vector2(656, 64)
+
+[node name="Spikes2" parent="Spikes" instance=ExtResource("6_41mlm")]
+position = Vector2(8, 0)

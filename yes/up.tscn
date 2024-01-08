@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5lmhw2ipeito"]
+
+[ext_resource type="Texture2D" uid="uid://5h1f446lgttx" path="res://png/W_Key_Light.png" id="1_le2yu"]
+
+[node name="up" type="Sprite2D"]
+position = Vector2(144, 176)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_le2yu")
